@@ -31,6 +31,10 @@
 #ifndef ZLIB_H
 #define ZLIB_H
 
+#ifdef Z_HAVE_STDARG_H
+#include <stdarg.h>
+#endif
+
 #include "zconf.h"
 
 #ifdef __cplusplus
@@ -1346,7 +1350,7 @@ ZEXTERN int ZEXPORT gzwrite OF((gzFile file,
    error.
 */
 
-ZEXTERN int ZEXPORTVA gzprintf Z_ARG((gzFile file, const char *format, ...));
+ZEXTERN int ZEXPORTVA gzvprintf Z_ARG((gzFile file, const char *format, va_list va));
 /*
      Converts, formats, and writes the arguments to the compressed file under
    control of the format string, as in fprintf.  gzprintf returns the number of
